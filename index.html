@@ -133,13 +133,14 @@
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById("currentDate").innerHTML = currentDate.toLocaleDateString('en-US', options);
   }
-  
+
 
   function getCurrentTime() {
     const currentTime = new Date();
     const options = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
     document.getElementById("currentTime").innerHTML = currentTime.toLocaleTimeString('en-US', options);
   }
+  
 
   window.onload = function() {
     getCurrentDate();
