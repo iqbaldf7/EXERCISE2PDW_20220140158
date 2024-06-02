@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      color: #000;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-control {
+      border-radius: 8px;
+    }
+    .form-check {
+      margin-bottom: 15px;
+    }
+    .custom-input {
+      height: 60px;
+    }
+    .custom-select {
+      height: 60px;
+    }
+    .custom-radio {
+      display: block;
+      margin-bottom: 5px;
+    }
+    #result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="text-center">Page 2</h1>
+    <form id="surveyForm">
+      <div class="form-group">
+        <label for="inputNama">Nama</label>
+        <input type="text" class="form-control custom-input" id="inputNama">
+      </div>
+      <div class="form-group">
+        <label for="inputUmur">Umur</label>
+        <input type="number" class="form-control custom-input" id="inputUmur">
+      </div>
+      <div class="form-group">
+        <label for="inputHobi">Hobi</label>
+        <input type="text" class="form-control custom-input" id="inputHobi">
+      </div>
+      <div class="form-group">
+        <label for="inputText1">Text Input</label>
+        <input type="text" class="form-control custom-input" id="inputText1">
+      </div>
+      <div class="form-group">
+        <label for="inputDate">Date Input</label>
+        <input type="date" class="form-control custom-input" id="inputDate">
+      </div>
+      <div class="form-group">
+        <label for="selectOption">Dropdown</label>
+        <select class="form-control custom-select" id="selectOption">
+          <option>Select an option</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Favorite Metal Band</label>
+        <div class="form-check custom-radio">
+          <input class="form-check-input" type="radio" name="bandOptions" id="radioA7X">
+          <label class="form-check-label" for="radioA7X">
+            Avenged Sevenfold
+          </label>
+        </div>
+        <div class="form-check custom-radio">
+          <input class="form-check-input" type="radio" name="bandOptions" id="radioBMTH">
+          <label class="form-check-label" for="radioBMTH">
+            Bring Me The Horizon
+          </label>
+        </div>
+        <div class="form-check custom-radio">
+          <input class="form-check-input" type="radio" name="bandOptions" id="radioLP">
+          <label class="form-check-label" for="radioLP">
+            Linkin Park
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById('surveyForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Retrieve input values
+      var nama = document.getElementById('inputNama').value;
+      var umur = document.getElementById('inputUmur').value;
+      var hobi = document.getElementById('inputHobi').value;
+      var textInput = document.getElementById('inputText1').value;
+      var dateInput = document.getElementById('inputDate').value;
+      var selectOption = document.getElementById('selectOption').value;
+      var bandOptions = document.querySelector('input[name="bandOptions"]:checked');
+      var favoriteBand = bandOptions ? bandOptions.parentElement.textContent.trim() : '';
+
+      // Display result
+      var resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `
+        <h2>Survey Result</h2>
+        <p><strong>Nama:</strong> ${nama}</p>
+        <p><strong>Umur:</strong> ${umur}</p>
+        <p><strong>Hobi:</strong> ${hobi}</p>
+        <p><strong>Text Input:</strong> ${textInput}</p>
+        <p><strong>Date Input:</strong> ${dateInput}</p>
+        <p><strong>Dropdown Option:</strong> ${selectOption}</p>
+        <p><strong>Favorite Metal Band:</strong> ${favoriteBand}</p>
+      `;
+    });
+  </script>
+
+</body>
+</html>
